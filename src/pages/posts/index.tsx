@@ -22,15 +22,20 @@ export default function Posts ({ posts }: PostArray) {
             key={post.slug} 
             direction='column'
             p='4' 
+            mb="50px"
             borderRadius="8"
             _hover={{background: '#555555', cursor: 'pointer'}}
-            onClick={e => router.push(`/${post.slug}`)}>
+            onClick={e => router.push(`/posts/${post.slug}`)}>
             <Heading>
               {post.title}
             </Heading>
 
             <Text mt="20px">
-              {post.content}
+              {post.content.slice(0, 500) + "..."}
+            </Text>
+
+            <Text mt="20px">
+              Click to read more!!!
             </Text>
           </Flex>
         ))
