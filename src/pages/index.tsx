@@ -10,11 +10,11 @@ const Home: NextPage = () => {
 
       <Flex h="90vh" direction="column" justify="center" align="center">
         <Heading>
-          Esta é a Home
+          This is a homepage!
         </Heading>
 
         <Text>
-          Clique em posts para acessar os posts
+          Go to /posts to see all the posts
         </Text>
       </Flex> 
     </>
