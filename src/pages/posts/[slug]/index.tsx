@@ -6,6 +6,7 @@ import { RichText } from 'prismic-reactjs'
 import { prismic } from '../../../services/prismic'
 import { queryAllPosts } from '../../../utils/helpers/query-all-posts'
 import { useEffect } from 'react'
+import { queryPostByUID } from '../../../utils/helpers/query-post-by-uid'
 
 interface PostProps {
   post: {
@@ -61,17 +62,11 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async context => {
   const { slug } = context.params
 
-  const response = await prismic.getByUID('post', slug)
-
-  const post = {
-    slug: response.uid,
-    title: RichText.asText(response.data.title),
-    content: RichText.asText(response.data.content),
-    image: response.data.image.url
-  }
-
+  const post = await queryPostByUID(prismic, slug)
 
   return {
-    props: {post}
+    props: {
+      post
+    }
   }
 }
