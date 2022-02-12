@@ -4,6 +4,8 @@ Implementation of a JAM Stack App using NextJS and Prismic CMS.
 
 Just decided to document this implementation because I've found a lot of overly complex and outdated implementations of this.
 
+Used Chakra UI to make styling more simple.
+
 ## Features
 
 - Listing all existing posts in the Prismic Database
@@ -92,3 +94,5 @@ Prismic Docs: https://prismic.io/docs
 @prismicio/client Technical Reference: https://prismic.io/docs/technical-reference/prismicio-client
 
 Nextjs Docs: https://nextjs.org/docs/getting-started
+
+ChakraUI docs: https://chakra-ui.com/docs/getting-started

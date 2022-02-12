@@ -4,7 +4,7 @@ export function Header () {
   return (
     <Flex as="header" w="100%" justify="space-between" align="center">
       <Heading>
-        Pedraos Blogs
+        Pedraos Blog
       </Heading>
 
       <Flex>
