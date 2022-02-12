@@ -2,24 +2,12 @@ import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Flex, Heading, Text, Image } from "@chakra-ui/react"
-import { RichText } from 'prismic-reactjs'
-import Prismic from '@prismicio/client'
 
-import { prismic } from '../services/prismic'
+import { queryAllPosts } from '../../utils/helpers/query-all-posts'
+import { prismic } from '../../services/prismic'
+import { PostArray } from '../../application/entities/Post'
 
-
-type Post = {
-  slug: string,
-  title: string,
-  content: string
-  image: string
-}
-
-interface PostProps {
-  posts: Post[]
-}
-
-export default function Posts ({ posts }: PostProps) {
+export default function Posts ({ posts }: PostArray) {
   const router = useRouter()
   
   useEffect(() => {
@@ -52,17 +40,7 @@ export default function Posts ({ posts }: PostProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await prismic.getByType('post')
-
-  const posts = response.results.map(post => {
-    return {
-        slug: post.uid,
-        title: RichText.asText(post.data.title),
-        content: RichText.asText(post.data.content),
-        image: post.data.image.url
-    }
-})
-
+  const posts = await queryAllPosts(prismic)
   return {
     props: {
       posts
